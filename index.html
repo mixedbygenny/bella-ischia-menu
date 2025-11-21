@@ -227,44 +227,7 @@
     }
 
 
-    /* Submenu */
-    .submenu { display: none; }
-
-    /* Voci menu */
-    .pizza {
-      margin: 20px 0;
-      padding: 10px 5px;
-      border-bottom: 1px solid #8A6955;
-    }
-    .pizza-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 5px 10px;
-    }
-.pizza-name {
-  flex: 1 1 70%;
-  font-size: 1.6em;
-  color: #000;
-  margin: 0;
-}
-
-.pizza-ingredients {
-  flex: 1 1 70%;
-  font-size: 1.3em;
-  margin: 0 0 6px 0;
-  color: #000;
-}
-
-.pizza-price {
-  flex: 1 1 30%;
-  text-align: right;
-  font-weight: 600;
-  font-size: 1.4em;
-  margin: 0;
-  color: #000;
-}
+ 
 
 
 
@@ -383,6 +346,15 @@
         <p class="pizza-price">14€</p>
         <button class="raccontami-button" onclick="raccontaAneddoto('capricciosa')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
       </div></div>
+
+    <!-- Pizze -->
+    <button class="menu-button" onclick="toggleSubmenu('pizze')">
+      <img src="pizza-icon.png" alt="Pizza Icon">
+      <span class="it">Pizze</span><span class="en">Pizza</span>
+    </button>
+    <div id="submenu-pizze" class="submenu">
+
+
       
       <div class="pizza"><div class="pizza-info">
   <p class="pizza-name">Nerano</p>
