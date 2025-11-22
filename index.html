@@ -1,1 +1,573 @@
 
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mixed by Genny - Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== SFONDO LEGNO SCURO RUSTICO ========== */
+    body {
+      margin: 0;
+      padding: 10px;
+      box-sizing: border-box;
+      color: #ffffff;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+   body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: -2;
+  pointer-events: none;
+}
+
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.25);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ========== ELEMENTI BASE ========== */
+    header {
+      text-align: center;
+      padding: 10px 0;
+    }
+    header img {
+      max-width: 250px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #coperto-text {
+      background-color: #c73427;
+      color: #000000;
+      font-size: 1.4em;
+      text-align: center;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-weight: normal;
+      border:none;
+      border-radius: 12px;
+      width: fit-content;
+    }
+    #coperto-text::after {
+      content: none;
+      display: block;
+      width: 100%;     /* ========== LINEA COPERTO ========== */
+      height: 2px;
+      background-color: #c73427;           /*      #c63327*/
+      margin: 5px auto 0;
+      border-radius: 1px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 0 10px 10px;
+      background-color: transparent;
+      border-radius: 12px;
+    }
+    main::after {
+      content: "";
+      display: block;
+      width: 90%;
+      height: 2px;
+      background-color: #c73427;              /*      #9A6B68*/
+      margin: 20px auto 0;
+      border-radius: 1px;
+    }
+
+/* Pulsanti menu - icona a sinistra allineata in colonna */
+.menu-button {
+  display: flex;
+  align-items: center;             /* Centra verticalmente icona e testo */
+  justify-content: flex-start;     /* Contenuto allineato a sinistra */
+  gap: 18px;                        /* Piccolo spazio tra icona e testo */
+  margin: 20px auto;               /* Pulsanti centrati nella pagina */
+  background-color: #c73427;
+  color: #000000;
+  padding: 0 16px;                 /* Minima altezza */
+  font-size: 1.6rem;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+  font-weight: bold;
+  border: none;             /*3px solid #4B3929; Larghezza fissa per allineare le icone tra loro */
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  width: 260px;                    /* Larghezza fissa per allineare le icone tra loro */
+  line-height: 1;                  /* Rimuove spazio extra verticale */
+  box-sizing: border-box;
+}
+
+
+
+.menu-button:active {
+  box-shadow: inset 8px 8px 16px #bebebe,
+              inset -8px -8px 16px #000000;
+}
+
+    
+#btn-allergeni {
+  width: 320px;            /* Più largo */
+  padding: 12px 20px;      /* Spazio interno */
+  margin: 30px auto;       /* Maggiore spazio sopra e sotto */
+  font-size: 1.8rem;       /* Testo più grande */
+  display: flex;           /* Usa flex per centrare contenuto */
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;     /* Centra verticalmente */
+  gap: 8px;                /* Piccolo spazio tra emoji e scritta */
+}
+
+
+.menu-button:hover {
+  background-color: #c73427;            /*      #C65D3B*/
+  transform: translate(2px, 2px);
+}
+
+.menu-button img {
+  height: 2em;                     /* Icona compatta */
+  width: auto;
+  display: block;                  /* Elimina spazio fantasma */
+}
+
+
+    /* Submenu */
+    .submenu { display: none; }
+
+    /* Voci menu */
+    .pizza {
+      margin: 20px 0;
+      padding: 10px 5px;
+      border-bottom: 1px solid #8A6955;
+    }
+    .pizza-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 5px 10px;
+    }
+.pizza-name {
+  flex: 1 1 70%;
+  font-size: 1.6em;
+  color: #000;
+  margin: 0;
+}
+
+.pizza-ingredients {
+  flex: 1 1 70%;
+  font-size: 1.3em;
+  margin: 0 0 6px 0;
+  color: #000;
+}
+
+.pizza-price {
+  flex: 1 1 30%;
+  text-align: right;
+  font-weight: 600;
+  font-size: 1.4em;
+  margin: 0;
+  color: #000;
+}
+
+
+    /* Pulsante raccontami */
+    .raccontami-button {
+      margin-top: 5px;
+      background-color: #c73427;
+      color: #000000;
+      padding: 6px 12px;
+      font-size: 1.4rem;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid #4B3929;
+    }
+    .raccontami-button:hover { background-color: #9A8468; }
+
+    /* Bandiere lingua */
+    #langToggle {
+      position: fixed; top: 10px; left: 10px; z-index: 10000;
+      display: flex; gap: 12px;
+    }
+    #langToggle img {
+      width: 32px; height: 21px; cursor: pointer;
+      border: 2px solid transparent; border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+    #langToggle img.selected { border-color: #9A8468; }
+    .it, .en { display: none; }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .menu-button { width: 75%; font-size: 2em; margin: 5px auto; }            /* PROVA  MARGIN è IL GAP FRA I VARI PULSANTI, */ 
+      .pizza-name { font-size: 1.7em; }
+      .pizza-ingredients { font-size: 1.1em; }
+      .pizza-price { font-size: 1.5em; }
+    }
+
+/* Effetto luce bianca dietro i pulsanti */
+/* Disattivato effetto luce */
+.menu-button, #coperto-text, #btn-allergeni {
+  box-shadow: none;
+}
+
+.menu-button:hover, #coperto-text:hover, #btn-allergeni:hover {
+  box-shadow: none;
+}
+
+    
+#submenu-allergeni * {
+  color: black !important;
+}
+
+
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Selettore lingua -->
+  <div id="langToggle">
+    <img src="https://flagcdn.com/w20/it.png" alt="Italiano" id="flag-it" tabindex="0" />
+    <img src="https://flagcdn.com/w20/gb.png" alt="English" id="flag-en" tabindex="0" />
+  </div>
+
+  <header>
+    <img src="LogoBI.jpg" alt="Logo Mixed by Genny" />      
+    <p id="coperto-text">
+      <span class="it">La vera pizza Napoletana</span>
+      <span class="en">The real Neapolitan pizza</span>
+    </p>
+  </header>
+
+  <main>
+    <!-- Pizze -->
+    <button class="menu-button" onclick="toggleSubmenu('pizze')">
+      <img src="pizza-icon.png" alt="Pizza Icon">
+      <span class="it">Pizze</span><span class="en">Pizza</span>
+    </button>
+    <div id="submenu-pizze" class="submenu">
+
+
+      
+      <!-- PIZZE -->
+      
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Margherita</p>
+        <p class="pizza-ingredients it">Pomodoro San Marzano, mozzarella di bufala</p>
+        <p class="pizza-ingredients en">San Marzano tomato, buffalo mozzarella</p>
+        <p class="pizza-price">7€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('margherita')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+      
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Cosacca</p>
+        <p class="pizza-ingredients it">Pomodoro, parmigiano</p>
+        <p class="pizza-ingredients en">Tomato, parmesan</p>
+        <p class="pizza-price">6€</p>
+        
+      </div></div>
+
+      
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Marinara</p>
+        <p class="pizza-ingredients it">Pomodoro, aglio, origano</p>
+        <p class="pizza-ingredients en">Tomato, garlic, oregano</p>
+        <p class="pizza-price">6€</p>
+          </div></div>
+
+
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Primavera</p>
+        <p class="pizza-ingredients it">Fornarina,Mozzarella, pomodorini,prosciutto crudo e rucola</p>
+        <p class="pizza-ingredients en">Fornarina, mozzarella, cherry tomatoes, prosciutto crudo, and arugula</p>
+        <p class="pizza-price">9€</p>
+          </div></div>
+
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Americana</p>
+        <p class="pizza-ingredients it">Pomodoro, mozzarella, salame opiccante, peperoni e peperoncino</p>
+        <p class="pizza-ingredients en">Tomato, mozzarella, spicy salami, bell peppers, and chili pepper</p>
+        <p class="pizza-price">9€</p>
+          </div></div>
+
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Romana</p>
+        <p class="pizza-ingredients it">Pomodoro, mozzarella, acciughe, capperi e olive nere</p>
+        <p class="pizza-ingredients en">Tomato, mozzarella, anchovies, capers, and black olives</p>
+        <p class="pizza-price">8€</p>
+          </div></div>
+
+      
+      
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Quattro Formaggi</p>
+        <p class="pizza-ingredients it">Mozzarella, gorgonzola, emmenthal, provola</p>
+        <p class="pizza-ingredients en">Mozzarella, gorgonzola, emmenthal, provola cheese</p>
+        <p class="pizza-price">13€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('quattro_formaggi')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+      
+      <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Capricciosa</p>
+        <p class="pizza-ingredients it">Pomodoro, mozzarella, prosciutto cotto, funghi, carciofi, olive</p>
+        <p class="pizza-ingredients en">Tomato, mozzarella, cooked ham, mushrooms, artichokes, olives</p>
+        <p class="pizza-price">14€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('capricciosa')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+      
+      <div class="pizza"><div class="pizza-info">
+  <p class="pizza-name">Nerano</p>
+  <p class="pizza-ingredients it">Zucchine fritte, provolone del monaco, basilico</p>
+  <p class="pizza-ingredients en">Fried zucchini, Provolone del Monaco cheese, basil</p>
+  <p class="pizza-price">14€</p>
+  <button class="raccontami-button" onclick="raccontaAneddoto('nerano')">
+    <span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span>
+  </button>
+</div></div>
+
+
+ <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Toto'</p>
+        <p class="pizza-ingredients it">Pomodoini, mozzarella, chamignon, salsiccia, salsa tartufata</p>
+        <p class="pizza-ingredients en">Cherry tomatoes, mozzarella, mushrooms, sausage, truffle sauce</p>
+        <p class="pizza-price">10€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('margherita')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+
+
+       <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Casamicciola</p>
+        <p class="pizza-ingredients it">Pomodoro San Marzano, mozzarella, salame piccante, gorgonzola</p>
+        <p class="pizza-ingredients en">San Marzano tomato,mozzarella,spicy salami,gorgonzola</p>
+        <p class="pizza-price">9€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('margherita')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+
+
+       <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Troisi</p>
+        <p class="pizza-ingredients it">provola, funghi, radicchio, salsiccia, gorgonzola</p>
+        <p class="pizza-ingredients en">provola, mushrooms, radicchio, sausage, gorgonzola</p>
+        <p class="pizza-price">10€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('margherita')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+
+
+       <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Umbria</p>
+        <p class="pizza-ingredients it">Mozzarella,funghi porcini,funghi champignon,salsiccia,salsa tartufata</p>
+        <p class="pizza-ingredients en">Mozzarella, porcini mushrooms, champignon mushrooms, sausage, truffle sauce</p>
+        <p class="pizza-price">10€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('margherita')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+
+
+       <div class="pizza"><div class="pizza-info">
+        <p class="pizza-name">Carbonara</p>
+        <p class="pizza-ingredients it">Uovo strapazzato, mozzarellla, pancetta, pepe, parmigiano</p>
+        <p class="pizza-ingredients en">Scrambled egg, mozzarella, bacon, pepper, Parmesan</p>
+        <p class="pizza-price">10€</p>
+        <button class="raccontami-button" onclick="raccontaAneddoto('margherita')"><span class="it">🎙 Raccontami</span><span class="en">🎙 Tell me</span></button>
+      </div></div>
+
+
+
+
+
+      
+    </div>
+
+
+    
+<!-- Sfizi -->
+<button class="menu-button" onclick="toggleSubmenu('sfizi')">
+  <img src="sfizi.png" alt="Sfizi Icon">
+  <span class="it">Sfizi</span><span class="en">Snacks</span>
+</button>
+
+    
+<div id="submenu-sfizi" class="submenu">
+
+  
+  <div class="pizza"><div class="pizza-info">
+    <p class="pizza-name">Patatine Fritte</p>
+    <p class="pizza-ingredients en">Crispy French fries</p>
+    <p class="pizza-price">4.50€</p>
+  </div></div>
+
+
+  
+  <div class="pizza"><div class="pizza-info">
+    <p class="pizza-name">Crocchè 2 pezzi</p>
+    <p class="pizza-ingredients en">croquettes</p>
+    <p class="pizza-price">4€</p>
+  </div></div>
+
+
+
+
+      <div class="pizza"><div class="pizza-info">
+    <p class="pizza-name">Arancina al ragu'</p>
+    <p class="pizza-ingredients en">Rice ball with meat sauce</p>
+    <p class="pizza-price">5€</p>
+  </div></div>
+
+
+      <div class="pizza"><div class="pizza-info">
+    <p class="pizza-name">Frittatina di pasta</p>
+    <p class="pizza-ingredients en">Pasta omelette</p>
+    <p class="pizza-price">4.50€</p>
+  </div></div>
+
+
+      <div class="pizza"><div class="pizza-info">
+    <p class="pizza-name">Zeppoline</p>
+    <p class="pizza-ingredients en">Zeppoli</p>
+    <p class="pizza-price">4.50€</p>
+  </div></div>
+
+  
+</div>
+
+    
+
+    <!-- Bibite -->
+    <button class="menu-button" onclick="toggleSubmenu('bibite')">
+      <img src="bibite.png" alt="Drink Icon">
+      <span class="it">Bibite</span><span class="en">Drinks</span>
+    </button>
+    <div id="submenu-bibite" class="submenu">
+      <div class="pizza"><div class="pizza-info"><p class="pizza-name">Birra Chiara alla Spina</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Fresh draft light beer</p><p class="pizza-price">5€</p></div></div>
+      <div class="pizza"><div class="pizza-info"><p class="pizza-name">Coca-Cola</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Coca-Cola</p><p class="pizza-price">3€</p></div></div>
+      <div class="pizza"><div class="pizza-info"><p class="pizza-name">Acqua Naturale 0.5L</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Still mineral water</p><p class="pizza-price">2€</p></div></div>
+      <div class="pizza"><div class="pizza-info"><p class="pizza-name">The' limone o pesca</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">lemon or peach juice</p><p class="pizza-price">3€</p></div></div>
+       <div class="pizza"><div class="pizza-info"><p class="pizza-name">Sprite</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Sprite</p><p class="pizza-price">3€</p></div></div>
+      <div class="pizza"><div class="pizza-info"><p class="pizza-name">Fanta</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Fanta</p><p class="pizza-price">3€</p></div></div>
+    
+    </div>
+
+    <!-- Dolci -->
+    <button class="menu-button" onclick="toggleSubmenu('dolci')">
+      <img src="dolci.png" alt="Dessert Icon">
+      <span class="it">Dolci</span><span class="en">Desserts</span>
+    </button>
+    <div id="submenu-dolci" class="submenu">
+      <div class="pizza"><div class="pizza-info"><p class="pizza-name">Baba' napoletano</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Neapolitan baba</p><p class="pizza-price">5.50€</p></div></div>
+      <div class="pizza"><div class="pizza-info"><p class="pizza-name">Pastiera napoletana</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Neapolitan Pastiera</p><p class="pizza-price">6€</p></div></div>
+     <div class="pizza"><div class="pizza-info"><p class="pizza-name">Delizia al limone</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Lemon delight</p><p class="pizza-price">6€</p></div></div>
+ <div class="pizza"><div class="pizza-info"><p class="pizza-name">Cremoso all'oreo</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">creamy with Oreo</p><p class="pizza-price">6€</p></div></div>
+ <div class="pizza"><div class="pizza-info"><p class="pizza-name">Semifreddo pistacchio e limone</p><p class="pizza-ingredients it"></p><p class="pizza-ingredients en">Pistachio and lemon semifreddo</p><p class="pizza-price">6.50€</p></div></div>
+   
+    
+    
+    </div>
+
+    <!-- Allergeni -->
+   <button class="menu-button" id="btn-allergeni" onclick="toggleSubmenu('allergeni')">
+  ⚠️ Allergeni
+</button>
+    <div id="submenu-allergeni" class="submenu" style="text-align: left; padding: 10px 20px;">
+      <p><strong>Per la tua sicurezza, consulta la lista e per una migliore esperienza gastronomica, comunicaci le tue esigenze!</strong></p>
+      <hr>
+      <ul>
+        <li><strong>Latte:</strong> prodotti caseari, latticini e derivati<br><em>Milk: dairy products and derivatives</em></li>
+        <li><strong>Frutta a guscio:</strong> mandorle, nocciole, noci, pistacchi<br><em>Tree nuts: almonds, hazelnuts, walnuts, pistachios</em></li>
+        <li><strong>Sedano:</strong> a pezzi o nei preparati vegetali<br><em>Celery: pieces or in vegetable preparations</em></li>
+        <li><strong>Semi:</strong> nel pane o in alcuni tipi di farine<br><em>Seeds: in bread or certain flours</em></li>
+        <li><strong>Peperoncino</strong><br><em>Chili pepper</em></li>
+        <li><strong>Senape:</strong> nelle salse e nei condimenti<br><em>Mustard: in sauces and dressings</em></li>
+        <li><strong>Glutine:</strong> in tutti i cereali e suoi derivati<br><em>Gluten: in all cereals and derivatives</em></li>
+        <li><strong>Arachidi:</strong> creme e condimenti<br><em>Peanuts: creams and dressings</em></li>
+      </ul>
+    </div>
+  </main>
+
+  <script>
+    let currentLang = 'it';
+    let currentUtterance = null;
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.it').forEach(el => el.style.display = (lang === 'it') ? 'inline' : 'none');
+      document.querySelectorAll('.en').forEach(el => el.style.display = (lang === 'en') ? 'inline' : 'none');
+      document.getElementById('flag-it').classList.toggle('selected', lang === 'it');
+      document.getElementById('flag-en').classList.toggle('selected', lang === 'en');
+    }
+
+    document.getElementById('flag-it').addEventListener('click', () => setLanguage('it'));
+    document.getElementById('flag-en').addEventListener('click', () => setLanguage('en'));
+    setLanguage('it');
+
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      if (!submenu) return;
+      document.querySelectorAll('.submenu').forEach(el => { if (el !== submenu) el.style.display = 'none'; });
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+      stopSpeaking();
+    }
+
+    function stopSpeaking() {
+      window.speechSynthesis.cancel();
+      currentUtterance = null;
+    }
+
+function raccontaAneddoto(tipo) {
+  stopSpeaking();
+  const aneddoti = {
+    margherita: {
+      it: "La pizza Margherita nacque a Napoli nel 1889 per omaggiare la regina Margherita di Savoia. Pomodoro, mozzarella e basilico richiamano i colori della bandiera italiana, anche se alcuni storici pensano che la combinazione fosse già comune prima.",
+      en: "The Margherita pizza was born in Naples in 1889 to honor Queen Margherita of Savoy. Tomato, mozzarella, and basil reflect the Italian flag colors, although some historians believe this combination was already common before."
+    },
+    quattro_formaggi: {
+      it: "La Quattro Formaggi celebra i formaggi italiani: i pizzaioli la inventarono per valorizzare avanzi di formaggio, creando un mix cremoso e saporito.",
+      en: "The Four Cheese pizza celebrates Italian cheeses:  According to tradition, pizzaiolos created it to use leftover cheese, resulting in a creamy and flavorful mix."
+    },
+    diavola: {
+      it: "La Cosacca è la regina della semplicità.",
+      en: "The Cosacca is the queen of simplicity."
+    },
+    capricciosa: {
+      it: "La Capricciosa nacque a Roma negli anni ’30 come pizza 'svuotafrigo': funghi, prosciutto, carciofi e olive variavano in base agli ingredienti disponibili. Il suo nome richiama il carattere fantasioso e mai identico di questa combinazione.",
+      en: "The Capricciosa was created in Rome in the 1930s as a 'clean-out-the-fridge' pizza: mushrooms, ham, artichokes, and olives changed depending on what was available. Its name recalls the whimsical and ever-changing nature of this mix."
+    },
+    nerano: {
+  it: "La pizza Nerano si ispira alla celebre pasta alle zucchine nata nell’omonimo borgo della Costiera Sorrentina. L’ingrediente segreto è il Provolone del Monaco, che dona alla pizza un gusto intenso e cremoso.",
+  en: "The Nerano pizza is inspired by the famous zucchini pasta from the village of Nerano on the Sorrento Coast. The secret ingredient is Provolone del Monaco cheese, which gives the pizza a rich and creamy flavor."
+}
+
+  };
+
+  if (!aneddoti[tipo]) return;
+  currentUtterance = new SpeechSynthesisUtterance(aneddoti[tipo][currentLang]);
+  currentUtterance.lang = currentLang === 'it' ? 'it-IT' : 'en-GB';
+  window.speechSynthesis.speak(currentUtterance);
+}
+
+  </script>
+</body>
+</html>
+
