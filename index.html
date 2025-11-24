@@ -120,11 +120,13 @@
   box-sizing: border-box;
 }
 
-    
-/* Allineamento testo "Pizze Special" */
-button.menu-button[onclick="toggleSubmenu('special')"] span {
-  margin-left: -6px;
+/* Sposta a sinistra solo il pulsante "Pizze Special" */
+button.menu-button[onclick="toggleSubmenu('special')"] {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
+    
+
 
 
 
